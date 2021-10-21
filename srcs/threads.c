@@ -98,5 +98,7 @@ void	threads_init(t_args *args)
 	join_threads(&th, &th2, args);
 	free(th);
 	free(th2);
+	all_mutex_destroy(args->num, &mutex);
+	free(mutex);
 	philo_free(philo, args);
 }

@@ -12,10 +12,16 @@
 
 #include "philosopher.h"
 
-float	time_diff(struct timeval *start, struct timeval *end)
+void	all_mutex_destroy(int total, pthread_mutex_t **mutex)
 {
-	return ((end->tv_sec - start->tv_sec)
-		+ 1e-6 * (end->tv_usec - start->tv_usec));
+	int	i;
+
+	i = 0;
+	while (i < total)
+	{
+		pthread_mutex_destroy(&(*mutex)[i]);
+		i++;
+	}
 }
 
 void	all_mutex_init(int total, pthread_mutex_t **mutex)
@@ -39,8 +45,6 @@ void	philo_free(t_philo *philo, t_args *args)
 	{
 		free(philo[i].last_eat);
 		free(philo[i].inter);
-		pthread_mutex_destroy(philo[i].ileft);
-		pthread_mutex_destroy(philo[i].ileft);
 		i++;
 	}
 	i = 0;

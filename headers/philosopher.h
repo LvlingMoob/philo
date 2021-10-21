@@ -73,6 +73,7 @@ void	philo_init(t_philo *philo, pthread_mutex_t **mutex, t_args *args);
 void	philo_free(t_philo *philo, t_args *args);
 float	time_diff(struct timeval *start, struct timeval *end);
 void	all_mutex_init(int total, pthread_mutex_t **mutex);
+void	all_mutex_destroy(int total, pthread_mutex_t **mutex);
 
 /*philosopher.c-----------------------------------------------*/
 void	philosopher(t_philo *philo);
